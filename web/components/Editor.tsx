@@ -18,7 +18,9 @@ export default function Editor({ roomId }: { roomId: string }) {
     if (!host.current) return
 
     const ydoc = new Y.Doc()
-    const provider = new WebsocketProvider('ws://localhost:4000/ws', roomId, ydoc)
+    const raw = new URLSearchParams(window.location.search).get('port')
+   const port = raw && /^\d{2,5}$/.test(raw) ? raw : '4100' // digits only, never trust a URL param
+    const provider = new WebsocketProvider(`ws://localhost:${port}/ws`, roomId, ydoc)
     const ytext = ydoc.getText('code')
 
     // Presence: who am I and what colour is my cursor
