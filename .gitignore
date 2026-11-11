@@ -17,3 +17,21 @@ build/
 
 # OS files
 .DS_Store
+# Dependencies
+**/node_modules/
+
+# Next.js
+**/.next/
+**/out/
+
+# Build output
+**/dist/
+**/build/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
